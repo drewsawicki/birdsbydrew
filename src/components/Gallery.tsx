@@ -46,7 +46,7 @@ export default function Gallery() {
                     <div className="w-full h-full border-3 border-spring shadow-[0_0_20px_5px_rgba(144,255,144,0.4)]"></div>
                   </div>
 
-                  <div className="relative" style={{ aspectRatio: '4/3' }}>
+                  <div className="relative" style={{ aspectRatio: '4/3', cursor: 'pointer' }} >
                   {/* Click-blocking overlay */}
                     <div className="absolute inset-0 z-10" onContextMenu={(e) => e.preventDefault()}></div>
 
