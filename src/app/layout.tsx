@@ -1,6 +1,4 @@
 import { DM_Mono } from 'next/font/google';
-import { VT323 } from 'next/font/google';
-import Link from "next/link";
 import "./globals.css";
 import NavBar from '@/components/NavBar';
 
@@ -8,12 +6,6 @@ const dmMono = DM_Mono({
   subsets: ['latin'],
   weight: ['400'],
   variable: '--font-mono'
-})
-
-const vt232 = VT323({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-vt'
 })
 
 export const metadata = {

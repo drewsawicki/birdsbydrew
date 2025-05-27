@@ -4,7 +4,6 @@ import React from 'react';
 import { GalleryImage } from '@/models/gallery';
 import galleryData from '../../db/gallery.json';
 import { useState } from 'react';
-import { useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 
 

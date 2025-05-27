@@ -1,7 +1,3 @@
-// app/page.tsx
-import Image from 'next/image'
-import heroImg from '../../public/flicker.png'
-
 export default function HomePage() {
   return (
     <div className="relative h-[80vh] w-full overflow-hidden rounded-lg">
