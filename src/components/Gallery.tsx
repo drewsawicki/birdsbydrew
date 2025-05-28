@@ -136,12 +136,14 @@ export default function Gallery() {
                   onClick={(e) => e.stopPropagation()}
                 >
                   <div className="relative w-full max-w-full max-h-[85vh] border border-spring shadow-[0_0_10px_2px_rgba(0,255,136,0.4),0_0_20px_6px_rgba(0,255,136,0.2)] bg-black">
+                    {/* Loader */}
                     {!imageLoaded && (
                       <div className="absolute inset-0 flex items-center justify-center z-20 bg-black/60">
-                        <div className="w-10 h-10 border-3 border-spring border-t-transparent rounded-full animate-spin" />
+                        <div className="w-10 h-10 border-4 border-spring border-t-transparent rounded-full animate-spin" />
                       </div>
                     )}
 
+                    {/* Image */}
                     <img
                       src={activeImage.srcl}
                       alt={activeImage.alt}
@@ -149,10 +151,12 @@ export default function Gallery() {
                         imageLoaded ? 'opacity-100' : 'opacity-0'
                       }`}
                       draggable={false}
+                      loading="lazy"
                       onLoad={() => setImageLoaded(true)}
                     />
 
-                    {!imageLoaded && (
+
+                    {imageLoaded && (
                       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
                         <span className="text-gray text-l sm:text-2xl font-semibold tracking-widest opacity-15 select-none" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.3)' }}>
                           © Drew Sawicki
