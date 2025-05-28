@@ -2,11 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SquarePlay, Image, Info } from 'lucide-react';
-
-const CameraIcon = SquarePlay;
-const ImageIcon = SquarePlay;
-const InfoIcon = Info;
 
 export default function NavBar() {
     const pathname = usePathname();
