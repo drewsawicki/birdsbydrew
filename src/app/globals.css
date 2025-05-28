@@ -106,13 +106,41 @@
   0% {
     opacity: 1;
   }
-  98% {
+  95% {
     opacity: .98;
+  }
+  98% {
+    opacity: 0.5;
   }
   100% {
     opacity: 0;
   }
 }
+
+@keyframes appearDot {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes appearDotHome {
+  0% {
+    opacity: 0;
+  }
+  95% {
+    opacity: 0;
+  }
+  98% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 
 html {
   overflow-y: scroll;
@@ -121,7 +149,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-vt), monospace;
+  /* font-family: var(--font-vt), monospace; */
 }
 
 
@@ -175,6 +203,28 @@ body {
   animation: disappearDot 3.6s linear forwards;
 }
 
+.nav-red-dot-home {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 7px;
+  background-color: #F31313;
+  border-radius: 50%;
+  animation: appearDotHome 3.8s linear forwards;
+}
+
+.nav-red-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 7px;
+  background-color: #F31313;
+  border-radius: 50%;
+  animation: appearDot 0.3s ease-in forwards;
+}
+
 .dslr-nav {
   display: inline-flex;
   align-items: center;
@@ -212,6 +262,7 @@ body {
   text-decoration: none;
   transition: color 0.3s ease;
 }
+
 
 .active {
   color: #aaff00;

@@ -12,6 +12,7 @@ export default function Gallery() {
   const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
   const imagesPerPage = 6;
   const totalPages = Math.ceil(galleryData.length / imagesPerPage);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -31,13 +32,11 @@ export default function Gallery() {
     (currentPage + 1) * imagesPerPage
   );
 
-
-
     return (
       <div className='mt-8'>
         <div className="grid rounded-sm grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pl-8 pr-8 justify-items-center">
         {(paginatedImages as GalleryImage[]).map((image) => (
-          <div key={image.id} className='p-4 curser-pointer bg-platinum' onClick={() => setActiveImage(image)}>
+          <div key={image.id} className='p-4 curser-pointer bg-platinum' onClick={() => {setActiveImage(image); setImageLoaded(false)}}>
             <div className="w-full relative overflow-hidden bg-black text-white font-mono group">
                 {/* Image wrapper with hover outline */}
                 <div className="relative">
@@ -136,12 +135,21 @@ export default function Gallery() {
                   exit={{ scale: 0.85, opacity: 0 }}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <div className="relative w-full max-w-full max-h-[85vh] border border-spring shadow-[0_0_10px_2px_rgba(0,255,136,0.4),0_0_20px_6px_rgba(0,255,136,0.2)]">
+                  <div className="relative w-full max-w-full max-h-[85vh] border border-spring shadow-[0_0_10px_2px_rgba(0,255,136,0.4),0_0_20px_6px_rgba(0,255,136,0.2)] bg-black">
+                    {!imageLoaded && (
+                      <div className="absolute inset-0 flex items-center justify-center z-20 bg-black/60">
+                        <div className="w-10 h-10 border-3 border-spring border-t-transparent rounded-full animate-spin" />
+                      </div>
+                    )}
+
                     <img
                       src={activeImage.srcl}
                       alt={activeImage.alt}
-                      className="w-full max-w-full max-h-[84vh] object-contain block"
+                      className={`w-full max-w-full max-h-[84vh] object-contain block transition-opacity duration-300 ${
+                        imageLoaded ? 'opacity-100' : 'opacity-0'
+                      }`}
                       draggable={false}
+                      onLoad={() => setImageLoaded(true)}
                     />
 
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
@@ -156,19 +164,6 @@ export default function Gallery() {
                       </div>
                     </div>
                   </div>
-
-                  {/* <div className="absolute bottom-2 left-2 right-2 bg-black/60 p-2 text-white font-mono text-xs border border-gray-600">
-                    <div className="flex justify-between">
-                      <span>F{activeImage.fstop}</span>
-                      <span>ISO {activeImage.iso}</span>
-                      <span>1/{activeImage.speed}</span>
-                      <span className="text-spring">RAW L</span>
-                    </div>
-                    <div className="flex justify-between mt-1">
-                      <span>IMG_{activeImage.id}.{activeImage.body === 'N' ? 'NEF' : 'CR2'}</span>
-                      <span>{activeImage.date} {activeImage.time}</span>
-                    </div>
-                  </div> */}
                 </motion.div>
               </motion.div>
             )}

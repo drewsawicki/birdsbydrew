@@ -2,32 +2,40 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { SquarePlay, Image, Info } from 'lucide-react';
+
+const CameraIcon = SquarePlay;
+const ImageIcon = SquarePlay;
+const InfoIcon = Info;
 
 export default function NavBar() {
     const pathname = usePathname();
 
     return (
-        <header className="flex justify-center mt-4">
-          <nav className="dslr-nav">
+          <nav className="w-full flex justify-center gap-12 py-4 bg-platinum">
             <Link
               href="/"
-              className={`dslr-link text-[17px] ${pathname === '/' ? 'active' : ''}`}
+              className={`relative tracking-wide text-sm transition-colors duration-200`}
             >
-              Home
-            </Link>
-            <Link
-              href="/gallery"
-              className={`dslr-link text-[17px] ${pathname === '/gallery' ? 'active' : ''}`}
-            >
-              Gallery
-            </Link>
-            <Link
-              href="/about"
-              className={`dslr-link text-[17px] ${pathname === '/about' ? 'active' : ''}`}
-            >
-              About
-            </Link>
-          </nav>
-        </header>
+            Home
+            {pathname === '/' && <div className="nav-red-dot-home"></div>}
+          </Link>
+
+
+          <Link
+            href="/gallery"
+            className={`relative tracking-wide text-sm transition-colors duration-200`}
+          >
+          Gallery{pathname === '/gallery' && <div className="nav-red-dot"></div>}
+          </Link>
+
+          <Link
+            href="/about"
+            className={`relative tracking-wide text-sm transition-colors duration-200`}
+          >
+            About
+            {pathname === '/about' && <div className="nav-red-dot"></div>}
+          </Link>
+        </nav>
       );
 }
