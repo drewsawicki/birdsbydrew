@@ -145,13 +145,13 @@ export default function Gallery() {
                     />
 
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                      <span className="text-gray text-2xl font-semibold tracking-widest opacity-15 select-none" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.3)' }}>
+                      <span className="text-gray text-l sm:text-2xl font-semibold tracking-widest opacity-15 select-none" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.3)' }}>
                         © Drew Sawicki
                       </span>
-                      <div className="absolute top-10 left-1/2 -translate-x-1/2 tracking-widest text-gray text-2xl font-semibold opacity-25 pointer-events-none select-none">
+                      <div className="absolute top-10 left-1/2 -translate-x-1/2 tracking-widest text-gray text-l sm:text-2xl font-semibold opacity-25 pointer-events-none select-none">
                         © Drew Sawicki
                       </div>
-                      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 tracking-widest text-gray text-2xl font-semibold opacity-25 pointer-events-none select-none">
+                      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 tracking-widest text-gray text-l sm:text-2xl font-semibold opacity-25 pointer-events-none select-none">
                         © Drew Sawicki
                       </div>
                     </div>
